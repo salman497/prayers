@@ -1,0 +1,28 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node modules
+node_modules/
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore build outputs
+dist/
+build/
+
+# Ignore environment variables and credentials
+.env
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore IDE files (VSCode, IntelliJ, etc.)
+.vscode/
+.idea/
+
+# Ignore package lock files (optional)
+package-lock.json
+yarn.lock

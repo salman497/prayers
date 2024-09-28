@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Prayer times checklist with motivational quotes for Fajr, Dhuhr, Asr, Maghrib, and Isha. Stay on track with your daily prayers."
+    />
+    <meta
+      name="keywords"
+      content="Prayer times, Islamic prayer, Fajr, Dhuhr, Asr, Maghrib, Isha, Muslim prayers, prayer schedule"
+    />
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Prayer Times Checklist" />
+    <meta
+      property="og:description"
+      content="Stay on track with your daily prayers and motivational quotes."
+    />
+    <meta property="og:image" content="https://yourimageurl.com/image.jpg" />
+    <meta property="og:url" content="https://localprayer.netlify.app" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prayer Times Checklist" />
+    <meta
+      name="twitter:description"
+      content="Stay on track with your daily prayers and motivational quotes."
+    />
+    <meta name="twitter:image" content="https://yourimageurl.com/image.jpg" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4DGQKJY3JY"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-4DGQKJY3JY");
+    </script>
+
+    <title>Prayer Times Checklist - Fajr, Dhuhr, Asr, Maghrib, Isha</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <h4>Local Prayer Times Weekly Schedule 🌙</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Days</th>
+          <th>Fajr 🌄</th>
+          <th>Dhuhr 🕛</th>
+          <th>Asr ⛅</th>
+          <th>Maghrib 🌆</th>
+          <th>Isha 🌃</th>
+        </tr>
+      </thead>
+      <tbody id="prayer-times">
+        <!-- Rows will be dynamically inserted here -->
+      </tbody>
+    </table>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+</html>
