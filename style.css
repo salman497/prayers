@@ -37,8 +37,12 @@ input[type="checkbox"] {
   @page {
     size: landscape;
   }
-}
 
+  /* Hide heading and print button when printing */
+  h4, button {
+    display: none;
+  }
+}
 /* Style for the print button */
 button {
   position: fixed;
