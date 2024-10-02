@@ -1,3 +1,4 @@
+/* General styling */
 body {
   font-family: 'Arial', sans-serif;
   margin: 20px;
@@ -20,19 +21,19 @@ table {
 th,
 td {
   border: 1px solid #ddd;
-  padding: 8px; /* Reduced padding to fit on a single page */
+  padding: 12px;
   text-align: center;
 }
 
 th {
   background-color: #4CAF50;
   color: white;
-  font-size: 0.9em; /* Slightly smaller to fit within page constraints */
+  font-size: 0.9em;
 }
 
 td {
   background-color: #fff;
-  font-size: 0.85em; /* Smaller text for compact view */
+  font-size: 0.85em;
 }
 
 input[type="checkbox"] {
@@ -47,6 +48,14 @@ input[type="checkbox"] {
   font-size: 0.75em;
   color: #666;
   margin-top: 5px;
+}
+
+/* Arrow style */
+.arrow {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 5px;
 }
 
 #habit-setup {
