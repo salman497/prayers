@@ -96,29 +96,59 @@ async function generatePrayerTable() {
       <tr ${isToday ? 'class="highlight-today"' : ""}>
         <td>${adjustedDaysOfWeek[i]}</td>
         <td>
-          <input type="checkbox" /> ${prayerTimes.fajr}
-          <br><span class="motivation">${quotes.fajr[i]}</span>
-          ${habits.fajr ? `<br><span class="arrow">→</span> <input type="checkbox" /> ${habits.fajr}` : ""}
+          <div class="prayer-time-wrapper">
+            <input type="checkbox" /> ${prayerTimes.fajr}
+            ${habits.fajr ? `
+            <div class="habit-wrapper">
+              <span class="arrow">→</span> 
+              <input type="checkbox" /> ${habits.fajr}
+            </div>` : ""}
+          </div>
+          <span class="motivation">${quotes.fajr[i]}</span>
         </td>
         <td>
-          <input type="checkbox" /> ${prayerTimes.dhuhr}
-          <br><span class="motivation">${quotes.dhuhr[i]}</span>
-          ${habits.dhuhr ? `<br><span class="arrow">→</span> <input type="checkbox" /> ${habits.dhuhr}` : ""}
+          <div class="prayer-time-wrapper">
+            <input type="checkbox" /> ${prayerTimes.dhuhr}
+            ${habits.dhuhr ? `
+            <div class="habit-wrapper">
+              <span class="arrow">→</span> 
+              <input type="checkbox" /> ${habits.dhuhr}
+            </div>` : ""}
+          </div>
+          <span class="motivation">${quotes.dhuhr[i]}</span>
         </td>
         <td>
-          <input type="checkbox" /> ${prayerTimes.asr}
-          <br><span class="motivation">${quotes.asr[i]}</span>
-          ${habits.asr ? `<br><span class="arrow">→</span> <input type="checkbox" /> ${habits.asr}` : ""}
+          <div class="prayer-time-wrapper">
+            <input type="checkbox" /> ${prayerTimes.asr}
+            ${habits.asr ? `
+            <div class="habit-wrapper">
+              <span class="arrow">→</span> 
+              <input type="checkbox" /> ${habits.asr}
+            </div>` : ""}
+          </div>
+          <span class="motivation">${quotes.asr[i]}</span>
         </td>
         <td>
-          <input type="checkbox" /> ${prayerTimes.maghrib}
-          <br><span class="motivation">${quotes.maghrib[i]}</span>
-          ${habits.maghrib ? `<br><span class="arrow">→</span> <input type="checkbox" /> ${habits.maghrib}` : ""}
+          <div class="prayer-time-wrapper">
+            <input type="checkbox" /> ${prayerTimes.maghrib}
+            ${habits.maghrib ? `
+            <div class="habit-wrapper">
+              <span class="arrow">→</span> 
+              <input type="checkbox" /> ${habits.maghrib}
+            </div>` : ""}
+          </div>
+          <span class="motivation">${quotes.maghrib[i]}</span>
         </td>
         <td>
-          <input type="checkbox" /> ${prayerTimes.isha}
-          <br><span class="motivation">${quotes.isha[i]}</span>
-          ${habits.isha ? `<br><span class="arrow">→</span> <input type="checkbox" /> ${habits.isha}` : ""}
+          <div class="prayer-time-wrapper">
+            <input type="checkbox" /> ${prayerTimes.isha}
+            ${habits.isha ? `
+            <div class="habit-wrapper">
+              <span class="arrow">→</span> 
+              <input type="checkbox" /> ${habits.isha}
+            </div>` : ""}
+          </div>
+          <span class="motivation">${quotes.isha[i]}</span>
         </td>
       </tr>
     `;

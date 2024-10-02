@@ -91,6 +91,41 @@ button:hover {
   right: 20px;
 }
 
+/* Modern styling for prayer time and habit */
+.prayer-time-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.prayer-time-wrapper input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.habit-wrapper {
+  display: flex;
+  align-items: center;
+  /*font-size: 0.85em;*/
+  color: #333;
+}
+
+.habit-wrapper .arrow {
+  margin-right: 5px;
+}
+
+.motivation {
+  display: block;
+  font-size: 0.75em;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Highlight today's row */
+.highlight-today {
+  background-color: #e0f7e0;
+}
+
 @media print {
   @page {
     size: landscape;
