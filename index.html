@@ -5,30 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Weekly Muslim prayer times checklist with motivational quotes for Fajr, Dhuhr, Asr, Maghrib, and Isha. Stay on track with your daily prayers."
+      content="Weekly Muslim prayer times checklist with motivational quotes and habit reminders for Fajr, Dhuhr, Asr, Maghrib, and Isha."
     />
     <meta
       name="keywords"
-      content="Muslim prayer times, Islamic prayer schedule, Fajr, Dhuhr, Asr, Maghrib, Isha, Muslim prayer checklist, prayer times printable"
+      content="Muslim prayer times, prayer habits, Islamic schedule, habit reminders, Fajr, Dhuhr, Asr, Maghrib, Isha"
     />
-    
-    <!-- Open Graph Tags for Social Media -->
-    <meta property="og:title" content="Your Printable Local Weekly Muslim Prayers" />
+
+    <!-- Open Graph & Twitter Meta Tags -->
+    <meta
+      property="og:title"
+      content="Your Printable Local Weekly Muslim Prayers with Habit Reminders"
+    />
     <meta
       property="og:description"
-      content="Printable weekly Muslim prayer schedule with motivational quotes for Fajr, Dhuhr, Asr, Maghrib, and Isha."
+      content="Stay on track with your daily prayers and habit anchors, including reminders for exercise, meditation, and reflection."
     />
     <meta property="og:image" content="favicon.ico" />
     <meta property="og:url" content="https://localprayer.netlify.app" />
-
-    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Your Printable Local Weekly Muslim Prayers" />
-    <meta
-      name="twitter:description"
-      content="Stay on track with your daily prayers and motivational quotes."
-    />
-    <meta name="twitter:image" content="favicon.ico" />
 
     <!-- Additional SEO Meta Tags -->
     <meta name="robots" content="index, follow" />
@@ -36,38 +31,49 @@
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-4DGQKJY3JY"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-4DGQKJY3JY");
-    </script>
-
-    <title>Your Printable Local Weekly Muslim Prayers</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your Printable Local Weekly Muslim Prayers with Habits</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h4>Your Printable Local Weekly Muslim Prayers 🌙</h4>
+    <h4>Your Printable Local Weekly Muslim Prayers with Habits 🌙</h4>
+
+    <!-- Habit Input Section -->
+    <div id="habit-setup">
+      <form id="habit-form">
+        <label for="fajr-habit">Fajr Habit:</label>
+        <input type="text" id="fajr-habit" placeholder="e.g., Exercise" />
+
+        <label for="dhuhr-habit">Dhuhr Habit:</label>
+        <input type="text" id="dhuhr-habit" placeholder="e.g., Meditate" />
+
+        <label for="asr-habit">Asr Habit:</label>
+        <input type="text" id="asr-habit" placeholder="e.g., Read" />
+
+        <label for="maghrib-habit">Maghrib Habit:</label>
+        <input type="text" id="maghrib-habit" placeholder="e.g., Reflect" />
+
+        <label for="isha-habit">Isha Habit:</label>
+        <input type="text" id="isha-habit" placeholder="e.g., Gratitude" />
+        
+        <button type="button" onclick="generatePrayerTable()">Update Habits</button>
+      </form>
+    </div>
 
     <table>
       <thead>
         <tr>
           <th>Days</th>
           <th>Fajr 🌄</th>
+          <th id="fajr-habit-th"></th>
           <th>Dhuhr 🕛</th>
+          <th id="dhuhr-habit-th"></th>
           <th>Asr ⛅</th>
+          <th id="asr-habit-th"></th>
           <th>Maghrib 🌆</th>
+          <th id="maghrib-habit-th"></th>
           <th>Isha 🌃</th>
+          <th id="isha-habit-th"></th>
         </tr>
       </thead>
       <tbody id="prayer-times">
@@ -76,10 +82,9 @@
     </table>
 
     <!-- Print Button -->
-    <button onclick="window.print()">Print Schedule</button>
+    <button id="print-btn" onclick="window.print()">Print Schedule</button>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
-
   </body>
 </html>

@@ -26,8 +26,10 @@ function getUserLocation() {
     }
   });
 }
+
 let latitude = undefined;
 let longitude = undefined;
+
 // Modified fetchPrayerTimes to use dynamic location
 async function fetchPrayerTimes(date) {
   try {
@@ -56,11 +58,45 @@ async function fetchPrayerTimes(date) {
   }
 }
 
-
+// Capture habits from form and update table
+function getHabits() {
+  return {
+    fajr: document.getElementById("fajr-habit").value.trim(),
+    dhuhr: document.getElementById("dhuhr-habit").value.trim(),
+    asr: document.getElementById("asr-habit").value.trim(),
+    maghrib: document.getElementById("maghrib-habit").value.trim(),
+    isha: document.getElementById("isha-habit").value.trim(),
+  };
+}
 
 async function generatePrayerTable() {
   const tableBody = document.getElementById("prayer-times");
   tableBody.innerHTML = "";
+
+  const habits = getHabits();
+
+  // Get table header elements
+  const fajrHeader = document.getElementById("fajr-habit-th");
+  const dhuhrHeader = document.getElementById("dhuhr-habit-th");
+  const asrHeader = document.getElementById("asr-habit-th");
+  const maghribHeader = document.getElementById("maghrib-habit-th");
+  const ishaHeader = document.getElementById("isha-habit-th");
+
+  // Update and display the habit headers only if the habit is provided
+  fajrHeader.textContent = habits.fajr ? habits.fajr : "";
+  fajrHeader.style.display = habits.fajr ? "" : "none";
+
+  dhuhrHeader.textContent = habits.dhuhr ? habits.dhuhr : "";
+  dhuhrHeader.style.display = habits.dhuhr ? "" : "none";
+
+  asrHeader.textContent = habits.asr ? habits.asr : "";
+  asrHeader.style.display = habits.asr ? "" : "none";
+
+  maghribHeader.textContent = habits.maghrib ? habits.maghrib : "";
+  maghribHeader.style.display = habits.maghrib ? "" : "none";
+
+  ishaHeader.textContent = habits.isha ? habits.isha : "";
+  ishaHeader.style.display = habits.isha ? "" : "none";
 
   const today = new Date(); // Get today's date
   today.setHours(0, 0, 0, 0); // Set time to midnight to avoid time comparison issues
@@ -87,31 +123,27 @@ async function generatePrayerTable() {
     // Check if the current date matches today's date
     const isToday = currentDate.getTime() === today.getTime(); // Compare the exact date, not just the day
 
-    // Create a row with the day's name and prayer times
+    // Create a row with the day's name, prayer times, and custom habits
     const row = `
       <tr ${isToday ? 'class="highlight-today"' : ""}>
         <td>${adjustedDaysOfWeek[i]}</td>
-        <td><input type="checkbox" /> ${
-          prayerTimes.fajr
-        }<br><span class="motivation">${quotes.fajr[i]}</span></td>
-        <td><input type="checkbox" /> ${
-          prayerTimes.dhuhr
-        }<br><span class="motivation">${quotes.dhuhr[i]}</span></td>
-        <td><input type="checkbox" /> ${
-          prayerTimes.asr
-        }<br><span class="motivation">${quotes.asr[i]}</span></td>
-        <td><input type="checkbox" /> ${
-          prayerTimes.maghrib
-        }<br><span class="motivation">${quotes.maghrib[i]}</span></td>
-        <td><input type="checkbox" /> ${
-          prayerTimes.isha
-        }<br><span class="motivation">${quotes.isha[i]}</span></td>
+        <td><input type="checkbox" /> ${prayerTimes.fajr}<br><span class="motivation">${quotes.fajr[i]}</span></td>
+        ${habits.fajr ? `<td><input type="checkbox" /> ${habits.fajr}</td>` : ""}
+        <td><input type="checkbox" /> ${prayerTimes.dhuhr}<br><span class="motivation">${quotes.dhuhr[i]}</span></td>
+        ${habits.dhuhr ? `<td><input type="checkbox" /> ${habits.dhuhr}</td>` : ""}
+        <td><input type="checkbox" /> ${prayerTimes.asr}<br><span class="motivation">${quotes.asr[i]}</span></td>
+        ${habits.asr ? `<td><input type="checkbox" /> ${habits.asr}</td>` : ""}
+        <td><input type="checkbox" /> ${prayerTimes.maghrib}<br><span class="motivation">${quotes.maghrib[i]}</span></td>
+        ${habits.maghrib ? `<td><input type="checkbox" /> ${habits.maghrib}</td>` : ""}
+        <td><input type="checkbox" /> ${prayerTimes.isha}<br><span class="motivation">${quotes.isha[i]}</span></td>
+        ${habits.isha ? `<td><input type="checkbox" /> ${habits.isha}</td>` : ""}
       </tr>
     `;
 
+    // Insert the row into the table body
     tableBody.insertAdjacentHTML("beforeend", row);
   }
-} // Fetch and generate the table when the page loads
+}
 
-
+// Generate the table when the page loads or when habits are updated
 generatePrayerTable();
