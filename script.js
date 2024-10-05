@@ -31,27 +31,30 @@ let latitude = undefined;
 let longitude = undefined;
 
 // Modified fetchPrayerTimes to use dynamic location
+const cacheForDate = {};
 async function fetchPrayerTimes(date) {
   try {
-    if (latitude === undefined || longitude === undefined) {
-      const { lat, lng } = await getUserLocation();
-      latitude = lat;
-      longitude = lng;
+    if (!cacheForDate[date.toDateString()]) {
+      if (latitude === undefined || longitude === undefined) {
+        const { lat, lng } = await getUserLocation();
+        latitude = lat;
+        longitude = lng;
+      }
+      const url = `https://api.aladhan.com/v1/timings/${Math.floor(
+        date.getTime() / 1000
+      )}?latitude=${latitude}&longitude=${longitude}&method=2`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+      cacheForDate[date.toDateString()] = {
+        fajr: convertToAMPM(data.data.timings.Fajr),
+        dhuhr: convertToAMPM(data.data.timings.Dhuhr),
+        asr: convertToAMPM(data.data.timings.Asr),
+        maghrib: convertToAMPM(data.data.timings.Maghrib),
+        isha: convertToAMPM(data.data.timings.Isha),
+      };
     }
-    const url = `https://api.aladhan.com/v1/timings/${Math.floor(
-      date.getTime() / 1000
-    )}?latitude=${latitude}&longitude=${longitude}&method=2`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    return {
-      fajr: convertToAMPM(data.data.timings.Fajr),
-      dhuhr: convertToAMPM(data.data.timings.Dhuhr),
-      asr: convertToAMPM(data.data.timings.Asr),
-      maghrib: convertToAMPM(data.data.timings.Maghrib),
-      isha: convertToAMPM(data.data.timings.Isha),
-    };
+    return cacheForDate[date.toDateString()];
   } catch (error) {
     console.error(error);
     return null;
@@ -68,8 +71,6 @@ function getHabits() {
     isha: document.getElementById("isha-habit").value.trim(),
   };
 }
-
-
 
 function getOrCreateHeading() {
   let element = document.getElementById("user-heading");
@@ -115,7 +116,9 @@ async function generatePrayerTable() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const userHeading = getOrCreateHeading();
-  userHeading.textContent = userName ? `${userName}'s Prayer and Habit Schedule` : "My Prayer and Habit Schedule";
+  userHeading.textContent = userName
+    ? `${userName}'s Prayer and Habit Schedule`
+    : "My Prayer and Habit Schedule";
 
   const todayDayOfWeek = today.getDay();
   const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -156,18 +159,16 @@ async function generatePrayerTable() {
     const row = `
       <tr ${isToday ? 'class="highlight-today"' : ""}>
         <td>${adjustedDaysOfWeek[i]}</td>
-        <td>${tdHtml(prayerTimes.fajr, 'fajr')}</td>
-        <td>${tdHtml(prayerTimes.dhuhr, 'dhuhr')}</td>
-        <td>${tdHtml(prayerTimes.asr, 'asr')}</td>
-        <td>${tdHtml(prayerTimes.maghrib, 'maghrib')}</td>
-        <td>${tdHtml(prayerTimes.isha, 'isha')}</td>
+        <td>${tdHtml(prayerTimes.fajr, "fajr")}</td>
+        <td>${tdHtml(prayerTimes.dhuhr, "dhuhr")}</td>
+        <td>${tdHtml(prayerTimes.asr, "asr")}</td>
+        <td>${tdHtml(prayerTimes.maghrib, "maghrib")}</td>
+        <td>${tdHtml(prayerTimes.isha, "isha")}</td>
       </tr>`;
 
     tableBody.insertAdjacentHTML("beforeend", row);
   }
 }
-
-
 
 // Generate the table when the page loads or when habits are updated
 generatePrayerTable();

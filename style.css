@@ -55,6 +55,24 @@ input[type="checkbox"] {
   margin: 5px;
 }
 
+/* Updated user name setup */
+#user-name-setup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+
+#user-name-setup input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+}
+
 /* Updated habit setup form */
 #habit-setup {
   display: flex;
@@ -68,6 +86,11 @@ input[type="checkbox"] {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 250px; /* Consistent width for input fields */
+}
+
+#habit-icon {
+  width: 150px; /* Narrower width for the icon selector */
 }
 
 #habit-setup button {
@@ -88,6 +111,7 @@ input[type="checkbox"] {
   background-color: #45a049;
 }
 
+/* Print button */
 #print-btn {
   position: fixed;
   top: 20px;
