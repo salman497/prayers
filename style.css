@@ -1,61 +1,103 @@
 /* General styling */
-
-select {
-  width: 100px;
-}
-
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 20px;
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #fafafa;
+  color: #444;
 }
 
 h4 {
   text-align: center;
   margin-bottom: 20px;
+  color: #4a90e2;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 th,
 td {
-  border: 1px solid #ddd;
-  padding: 12px;
+  padding: 16px;
   text-align: center;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #4a90e2;
   color: white;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 td {
   background-color: #fff;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+/* Improved input field and button styles */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b0bec5;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #4a90e2;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Arrow style */
-.arrow {
-  color: #4CAF50;
-  font-weight: bold;
-  font-size: 1em;
-  margin: 5px;
+button:hover {
+  background-color: #357ABD;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Updated user name setup */
+button:active {
+  background-color: #2C6091;
+}
+
+button i {
+  margin-right: 8px;
+}
+
+/* Updated form layout with Material Design */
+#habit-setup {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+
 #user-name-setup {
   display: flex;
   justify-content: center;
@@ -64,118 +106,124 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
-
-
 #user-name-setup input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #b0bec5;
+  border-radius: 4px;
   width: 250px;
 }
 
-/* Updated habit setup form */
-#habit-setup {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-#habit-setup input,
-#habit-setup select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 250px; /* Consistent width for input fields */
-}
-
-#habit-icon {
-  width: 150px; /* Narrower width for the icon selector */
-}
-
-#habit-setup button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-#habit-setup button i {
-  margin-right: 5px;
-}
-
-#habit-setup button:hover {
-  background-color: #45a049;
-}
-
-/* Print button */
-#print-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
-/* Modern styling for prayer time and habit */
+/* Improved Prayer and Habit Section */
 .prayer-time-wrapper {
   display: flex;
-  flex-direction: column;  /* Stack items vertically (prayer time + quote) */
-  justify-content: center; /* Center vertically */
-  align-items: center;     /* Center horizontally */
-  margin-bottom: 10px;     /* Space between rows */
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .prayer-time-habit {
   display: flex;
-  align-items: center;     /* Align items (checkbox, text, habit) in a line */
-  justify-content: center; /* Center horizontally */
-  margin-bottom: 5px;      /* Space between prayer time and quote */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .prayer-time-wrapper input[type="checkbox"] {
-  margin-right: 5px; /* Space between checkbox and text */
+  margin-right: 10px;
 }
 
 .habit-wrapper {
   display: inline-flex;
   align-items: center;
-  color: #333;
+  color: #444;
 }
 
 .habit-wrapper .arrow {
   margin-right: 5px;
 }
 
-.habit-span {
-  padding-left: 5px;
-}
-
 .motivation {
-  display: block;          /* Block-level element for new line */
-  font-family: 'Georgia', serif;  /* Use a more elegant serif font */
-  font-weight: normal;     /* Make it normal to keep readability */
-  font-size: 1em;          /* Increase font size */
-  color: #333;             /* Darker color for better readability */
-  text-align: center;      /* Center-align the quote */
-  font-style: italic;      /* Add italics to give emphasis to quotes */
+  font-family: 'Roboto', serif;
+  font-size: 1em;
+  color: #888;
+  text-align: center;
+  font-style: italic;
   max-width: 80%;
 }
 
-/* Highlight today's row */
 .highlight-today {
-  background-color: #e0f7e0;
+  background-color: #e0f7fa;
 }
 
-/* Style for user's name in print view */
+/* Print Button styling */
+#print-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#print-btn:hover {
+  background-color: #357ABD;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #habit-setup {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  table {
+    font-size: 0.85em;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  input[type="text"],
+  select {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  #habit-setup {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  #print-btn {
+    padding: 10px 12px;
+  }
+}
+
+/* Today's row highlight */
+.highlight-today {
+  background-color: #e8f5e9;
+}
+
+/* Style for heading in print view */
 #user-heading {
   text-align: center;
   font-size: 24px;
   margin-top: 20px;
 }
 
-/* Responsive and print-specific styles */
+/* Print view */
 @media print {
   #user-name-setup, h4, #habit-setup, button {
     display: none;
@@ -184,4 +232,10 @@ input[type="checkbox"] {
   #user-heading {
     display: block;
   }
+}
+
+/* Material Design Elevation for cards and table */
+.elevated {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
 }
