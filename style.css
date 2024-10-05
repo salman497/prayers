@@ -1,4 +1,8 @@
 /* General styling */
+
+select {
+  width: 50px;
+}
 body {
   font-family: 'Arial', sans-serif;
   margin: 20px;
@@ -71,6 +75,18 @@ input[type="checkbox"] {
   border-radius: 5px;
 }
 
+#user-name-setup input{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#user-name-setup {
+  padding-left: 5%;
+}
+
+
+
 button {
   background-color: #4CAF50;
   color: white;
@@ -126,12 +142,23 @@ button:hover {
   background-color: #e0f7e0;
 }
 
+/* Style for user's name in print view */
+#user-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.habit-span {
+  padding-left: 5px;
+}
+
 @media print {
-  @page {
-    size: landscape;
+  #user-name-setup, h4, #habit-setup, button {
+    display: none;
   }
 
-  h4, #habit-setup, button {
-    display: none;
+  #user-heading {
+    display: block;
   }
 }
