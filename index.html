@@ -40,7 +40,7 @@
   </head>
   <body>
     <!-- Customize Habit Button -->
-    <button id="customize-btn" class="mdc-button">Add Habit To Prayers</button>
+    <button id="customize-btn" class="mdc-button">Add Habits To Prayers</button>
   
     <!-- Habit Setup Popup -->
     <div id="habit-popup" class="popup-overlay">
@@ -74,7 +74,19 @@
               <option value="">Select Icon</option>
             </select>
           </div>
-  
+          <div class="form-group">
+            <label for="habit-day">For Day:</label>
+            <select id="habit-day">
+              <option value="all">All</option>
+              <option value="Sun">Sunday</option>
+              <option value="Mon">Monday</option>
+              <option value="Tues">Tuesday</option>
+              <option value="Wed">Wednesday</option>
+              <option value="Thurs">Thursday</option>
+              <option value="Fri">Friday</option>
+              <option value="Sat">Saturday</option>
+            </select>
+          </div>
           <button type="button" id="add-habit" class="mdc-button">
             <i class="fas fa-plus"></i> Add Habit
           </button>

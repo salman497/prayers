@@ -92,19 +92,25 @@ let prayerHabits = {
 };
 
 // Function to add habit to a specific prayer
-document.getElementById("add-habit").addEventListener("click", () => {
+document.getElementById("add-habit").addEventListener("click", function () {
   const prayer = document.getElementById("prayer-select").value;
-  const habitName = document.getElementById("habit-name").value;
-  const habitIcon = document.getElementById("habit-icon").value;
+  const habit = document.getElementById("habit-name").value.trim();
+  const icon = document.getElementById("habit-icon").value;
+  const day = document.getElementById("habit-day").value;
 
-  if (habitName) {
-    // Add habit to the corresponding prayer
-    prayerHabits[prayer].push({
-      habit: habitName,
-      icon: habitIcon,
-    });
-    generatePrayerTable(); // Re-render the table with new habits
+  if (!prayerHabits[prayer]) {
+    prayerHabits[prayer] = [];
   }
+
+  prayerHabits[prayer].push({
+    habit: habit,
+    icon: icon,
+    day: day
+  });
+
+  // Clear form inputs after adding habit
+  //document.getElementById("habit-form").reset();
+  generatePrayerTable(); 
 });
 
 // Modified function to render the table dynamically
@@ -132,21 +138,22 @@ async function generatePrayerTable() {
     const prayerTimes = await fetchPrayerTimes(currentDate);
     const isToday = currentDate.getTime() === today.getTime();
 
-    function tdHtml(prayerTime, prayerName) {
+    function tdHtml(prayerTime, prayerName, currentDay) {
       let habitHtml = prayerHabits[prayerName]
+        .filter((habit) => habit.day === "all" || habit.day === currentDay)
         .map(
           (habit) =>
             `<div class="habit-wrapper">
                <span class="arrow">→</span> 
                <input type="checkbox" />
-               ${habit.icon ? `<i class="${habit.icon}"></i>` : ""}
+               ${habit.icon ? `<i class="td-font-icon ${habit.icon}"></i>` : ""}
                <span class='habit-span'>${habit.habit}</span>
              </div>`
         )
         .join("");
-
+    
       const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span>`;
-
+    
       return `
         <div class="prayer-time-wrapper">
           <div class="prayer-time-habit">
@@ -159,11 +166,11 @@ async function generatePrayerTable() {
     const row = `
       <tr ${isToday ? 'class="highlight-today"' : ""}>
         <td>${adjustedDaysOfWeek[i]}</td>
-        <td>${tdHtml(prayerTimes.fajr, "fajr")}</td>
-        <td>${tdHtml(prayerTimes.dhuhr, "dhuhr")}</td>
-        <td>${tdHtml(prayerTimes.asr, "asr")}</td>
-        <td>${tdHtml(prayerTimes.maghrib, "maghrib")}</td>
-        <td>${tdHtml(prayerTimes.isha, "isha")}</td>
+        <td>${tdHtml(prayerTimes.fajr, "fajr", adjustedDaysOfWeek[i])}</td>
+        <td>${tdHtml(prayerTimes.dhuhr, "dhuhr", adjustedDaysOfWeek[i])}</td>
+        <td>${tdHtml(prayerTimes.asr, "asr", adjustedDaysOfWeek[i])}</td>
+        <td>${tdHtml(prayerTimes.maghrib, "maghrib", adjustedDaysOfWeek[i])}</td>
+        <td>${tdHtml(prayerTimes.isha, "isha", adjustedDaysOfWeek[i])}</td>
       </tr>`;
 
     tableBody.insertAdjacentHTML("beforeend", row);

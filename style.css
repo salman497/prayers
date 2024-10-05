@@ -48,6 +48,10 @@ select {
   transition: border-color 0.3s;
 }
 
+.td-font-icon {
+  padding-left: 4px;
+}
+
 input[type="text"]:focus,
 select:focus {
   border-color: #4a90e2;
