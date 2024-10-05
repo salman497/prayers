@@ -144,3 +144,83 @@ function getUniqueRandomQuote(prayer) {
 
   return prayerQuotes[quoteIndex];
 }
+
+
+const iconOptions = [
+  { name: '🏃', value: 'fas fa-running' },
+  { name: '📚', value: 'fas fa-book' },
+  { name: '❤️', value: 'fas fa-heart' },
+  { name: '🏋️', value: 'fas fa-dumbbell' },
+  { name: '🚴', value: 'fas fa-biking' },
+  { name: '🎵', value: 'fas fa-music' },
+  { name: '🧘', value: 'fas fa-yoga' },
+  { name: '🥕', value: 'fas fa-carrot' },
+  { name: '💧', value: 'fas fa-water' },
+  { name: '☕', value: 'fas fa-coffee' },
+  { name: '🌳', value: 'fas fa-tree' },
+  { name: '💻', value: 'fas fa-code' },
+  { name: '🎸', value: 'fas fa-guitar' },
+  { name: '🎨', value: 'fas fa-paint-brush' },
+  { name: '🎥', value: 'fas fa-film' },
+  { name: '🏊', value: 'fas fa-swimmer' },
+  { name: '🛌', value: 'fas fa-bed' },
+  { name: '🙏', value: 'fas fa-praying-hands' },
+  { name: '✍️', value: 'fas fa-pen' },
+  { name: '✈️', value: 'fas fa-plane' },
+  { name: '🧠', value: 'fas fa-mind' },
+  { name: '⚖️', value: 'fas fa-weight' },
+  { name: '💰', value: 'fas fa-wallet' },
+  { name: '🧘', value: 'fas fa-meditation' },
+  { name: '🏆', value: 'fas fa-trophy' },
+  { name: '🏫', value: 'fas fa-school' },
+  { name: '🌍', value: 'fas fa-language' },
+  { name: '📏', value: 'fas fa-pencil-ruler' },
+  { name: '💎', value: 'fas fa-gem' },
+  { name: '🚭', value: 'fas fa-smoking-ban' },
+  { name: '🗓️', value: 'fas fa-calendar-check' },
+  { name: '📷', value: 'fas fa-camera' },
+  { name: '🧠', value: 'fas fa-brain' },
+  { name: '☀️', value: 'fas fa-sun' },
+  { name: '🚶', value: 'fas fa-walking' },
+  { name: '⚽', value: 'fas fa-futbol' },
+  { name: '🌱', value: 'fas fa-seedling' },
+  { name: '💡', value: 'fas fa-lightbulb' },
+  { name: '🌐', value: 'fas fa-globe' },
+  { name: '🍪', value: 'fas fa-cookie-bite' },
+  { name: '🍃', value: 'fas fa-leaf' },
+  { name: '📞', value: 'fas fa-phone' },
+  { name: '🤝', value: 'fas fa-hands-helping' },
+  { name: '🔧', value: 'fas fa-tools' },
+  { name: '🚿', value: 'fas fa-shower' },
+  { name: '🚗', value: 'fas fa-car' },
+  { name: '🍽️', value: 'fas fa-utensils' },
+  { name: '🐱', value: 'fas fa-cat' },
+  { name: '🎲', value: 'fas fa-dice' }
+];
+
+function loadDropDown() {
+
+  const fajrElement = document.getElementById('fajr-icon');
+  const dhuhrElement = document.getElementById('dhuhr-icon');
+  const asrElement = document.getElementById('asr-icon');
+  const maghribElement = document.getElementById('maghrib-icon');
+  const ishaElement = document.getElementById('isha-icon');
+  
+  function populatePrayerDropdown(prayerElement) {
+    iconOptions.forEach(option => {
+      const newOption = document.createElement('option');
+      newOption.value = option.value;
+      newOption.text = option.name;
+      prayerElement.appendChild(newOption);
+    });
+  }
+  populatePrayerDropdown(fajrElement);
+  populatePrayerDropdown(dhuhrElement);
+  populatePrayerDropdown(asrElement);
+  populatePrayerDropdown(maghribElement);
+  populatePrayerDropdown(ishaElement);
+};
+
+
+loadDropDown();
+
