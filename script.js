@@ -129,7 +129,7 @@ async function generatePrayerTable() {
     const prayerTimes = await fetchPrayerTimes(currentDate);
     const isToday = currentDate.getTime() === today.getTime();
     function tdHtml(prayerTime, habit, habitIcon, prayerName) {
-      const randomQuote = `<span class="motivation"> ${getUniqueRandomQuote(prayerName)}</span` ; // Get unique quote for the prayer
+      const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span` ; // Get unique quote for the prayer
 
       return `
       <div class="prayer-time-wrapper">
