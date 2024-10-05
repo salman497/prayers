@@ -42,49 +42,40 @@
     <h4>Your Printable Local Weekly Muslim Prayers with Habits 🌙</h4>
 
     <!-- User Name Input Section -->
+   
+
+    <!-- Habit Input Section -->
+<!-- Habit Input Section -->
+<div id="habit-setup">
+  <form id="habit-form">
     <div id="user-name-setup">
       <label for="user-name">Your Name:</label>
       <input type="text" id="user-name" placeholder="Enter your name" />
     </div>
+    
+    <label for="prayer-select">Associate Your Habit with Prayer:</label>
+    <select id="prayer-select">
+      <option value="fajr">Fajr</option>
+      <option value="dhuhr">Dhuhr</option>
+      <option value="asr">Asr</option>
+      <option value="maghrib">Maghrib</option>
+      <option value="isha">Isha</option>
+    </select>
 
-    <!-- Habit Input Section -->
-    <div id="habit-setup">
-      <form id="habit-form">
-        <label for="fajr-habit">Fajr Habit:</label>
-        <input type="text" id="fajr-habit" placeholder="e.g., Exercise" />
-        <select id="fajr-icon">
-          <option value="">Select Icon</option>
-        </select>
+    <input type="text" id="habit-name" placeholder="Enter your habit" />
 
-        <label for="dhuhr-habit">Dhuhr Habit:</label>
-        <input type="text" id="dhuhr-habit" placeholder="e.g., Meditate" />
-        <select id="dhuhr-icon">
-          <option value="">Select Icon</option>
-        </select>
+    <select id="habit-icon">
+      <option value="">Select Icon</option>
+      <option value="fas fa-dumbbell">Exercise</option>
+      <option value="fas fa-book">Read</option>
+      <option value="fas fa-praying-hands">Meditate</option>
+    </select>
 
-        <label for="asr-habit">Asr Habit:</label>
-        <input type="text" id="asr-habit" placeholder="e.g., Read" />
-        <select id="asr-icon">
-          <option value="">Select Icon</option>
-        </select>
-
-        <label for="maghrib-habit">Maghrib Habit:</label>
-        <input type="text" id="maghrib-habit" placeholder="e.g., Reflect" />
-        <select id="maghrib-icon">
-          <option value="">Select Icon</option>
-        </select>
-
-        <label for="isha-habit">Isha Habit:</label>
-        <input type="text" id="isha-habit" placeholder="e.g., Gratitude" />
-        <select id="isha-icon">
-          <option value="">Select Icon</option>
-        </select>
-
-        <button type="button" onclick="generatePrayerTable()">
-          Update Habits
-        </button>
-      </form>
-    </div>
+    <button type="button" id="add-habit">
+      <i class="fas fa-plus"></i> Add
+    </button>
+  </form>
+</div>
 
     <table>
       <thead>

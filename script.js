@@ -69,32 +69,7 @@ function getHabits() {
   };
 }
 
-// Capture habits and icons from form
-function getHabitsAndIcons() {
-  return {
-    fajr: {
-      habit: document.getElementById("fajr-habit").value.trim(),
-      icon: document.getElementById("fajr-icon").value,
-    },
-    dhuhr: {
-      habit: document.getElementById("dhuhr-habit").value.trim(),
-      icon: document.getElementById("dhuhr-icon").value,
-    },
-    asr: {
-      habit: document.getElementById("asr-habit").value.trim(),
-      icon: document.getElementById("asr-icon").value,
-    },
-    maghrib: {
-      habit: document.getElementById("maghrib-habit").value.trim(),
-      icon: document.getElementById("maghrib-icon").value,
-    },
-    isha: {
-      habit: document.getElementById("isha-habit").value.trim(),
-      icon: document.getElementById("isha-icon").value,
-    },
-    userName: document.getElementById("user-name").value.trim(),
-  };
-}
+
 
 function getOrCreateHeading() {
   let element = document.getElementById("user-heading");
@@ -106,16 +81,42 @@ function getOrCreateHeading() {
   }
   return element;
 }
+// Object to store habits for each prayer
+let prayerHabits = {
+  fajr: [],
+  dhuhr: [],
+  asr: [],
+  maghrib: [],
+  isha: [],
+};
+
+// Function to add habit to a specific prayer
+document.getElementById("add-habit").addEventListener("click", () => {
+  const prayer = document.getElementById("prayer-select").value;
+  const habitName = document.getElementById("habit-name").value;
+  const habitIcon = document.getElementById("habit-icon").value;
+
+  if (habitName) {
+    // Add habit to the corresponding prayer
+    prayerHabits[prayer].push({
+      habit: habitName,
+      icon: habitIcon,
+    });
+    generatePrayerTable(); // Re-render the table with new habits
+  }
+});
+
+// Modified function to render the table dynamically
 async function generatePrayerTable() {
   const tableBody = document.getElementById("prayer-times");
   tableBody.innerHTML = "";
 
-  const { userName, ...habits } = getHabitsAndIcons(); // Get user-provided habits and icons
+  const userName = document.getElementById("user-name").value.trim(); // Get user name
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const userHeading = getOrCreateHeading();
-  userHeading.textContent = userName ? `${userName}'s Prayer and Habit Schedule`: "My Prayer and Habit Schedule";
-  
+  userHeading.textContent = userName ? `${userName}'s Prayer and Habit Schedule` : "My Prayer and Habit Schedule";
+
   const todayDayOfWeek = today.getDay();
   const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   const adjustedDaysOfWeek = daysOfWeek
@@ -125,37 +126,42 @@ async function generatePrayerTable() {
   for (let i = 0; i < 7; i++) {
     const currentDate = new Date(today);
     currentDate.setDate(today.getDate() + i);
-
     const prayerTimes = await fetchPrayerTimes(currentDate);
     const isToday = currentDate.getTime() === today.getTime();
-    function tdHtml(prayerTime, habit, habitIcon, prayerName) {
-      const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span` ; // Get unique quote for the prayer
+
+    function tdHtml(prayerTime, prayerName) {
+      let habitHtml = prayerHabits[prayerName]
+        .map(
+          (habit) =>
+            `<div class="habit-wrapper">
+               <span class="arrow">→</span> 
+               <input type="checkbox" />
+               ${habit.icon ? `<i class="${habit.icon}"></i>` : ""}
+               <span class='habit-span'>${habit.habit}</span>
+             </div>`
+        )
+        .join("");
+
+      const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span>`;
 
       return `
-      <div class="prayer-time-wrapper">
-        <div class="prayer-time-habit">
-          <input type="checkbox" /> ${prayerTime}
-          ${habit ? `
-          <div class="habit-wrapper">
-            <span class="arrow">→</span> <input type="checkbox" />
-            ${habitIcon ? `<i class="${habitIcon}"></i>` : ""} 
-            <span class='habit-span'>${habit}</span>
-          </div>` : ""}
-        </div>
-        <div class="motivation">${randomQuote}</div> 
-      </div>`;
+        <div class="prayer-time-wrapper">
+          <div class="prayer-time-habit">
+            <input type="checkbox" /> ${prayerTime} ${habitHtml}
+          </div>
+          <div class="motivation">${randomQuote}</div>
+        </div>`;
     }
-    // For each prayer, show the prayer time, habit with icon
+
     const row = `
-    <tr ${isToday ? 'class="highlight-today"' : ""}>
-      <td>${adjustedDaysOfWeek[i]}</td>
-      <td>${tdHtml(prayerTimes.fajr, habits.fajr.habit, habits.fajr.icon, 'fajr')}</td>
-      <td>${tdHtml(prayerTimes.dhuhr, habits.dhuhr.habit, habits.dhuhr.icon, 'dhuhr')}</td>
-      <td>${tdHtml(prayerTimes.asr, habits.asr.habit, habits.asr.icon, 'asr')}</td>
-      <td>${tdHtml(prayerTimes.maghrib, habits.maghrib.habit, habits.maghrib.icon, 'maghrib')}</td>
-      <td>${tdHtml(prayerTimes.isha, habits.isha.habit, habits.isha.icon, 'isha')}</td>
-    </tr>
-  `;
+      <tr ${isToday ? 'class="highlight-today"' : ""}>
+        <td>${adjustedDaysOfWeek[i]}</td>
+        <td>${tdHtml(prayerTimes.fajr, 'fajr')}</td>
+        <td>${tdHtml(prayerTimes.dhuhr, 'dhuhr')}</td>
+        <td>${tdHtml(prayerTimes.asr, 'asr')}</td>
+        <td>${tdHtml(prayerTimes.maghrib, 'maghrib')}</td>
+        <td>${tdHtml(prayerTimes.isha, 'isha')}</td>
+      </tr>`;
 
     tableBody.insertAdjacentHTML("beforeend", row);
   }

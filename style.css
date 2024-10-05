@@ -1,7 +1,7 @@
 /* General styling */
 
 select {
-  width: 50px;
+  width: 100px;
 }
 
 body {
@@ -55,40 +55,36 @@ input[type="checkbox"] {
   margin: 5px;
 }
 
+/* Updated habit setup form */
 #habit-setup {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-#habit-setup input {
+#habit-setup input,
+#habit-setup select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-#user-name-setup input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#user-name-setup {
-  padding-left: 5%;
-}
-
-button {
+#habit-setup button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 15px;
   border: none;
   border-radius: 5px;
+  padding: 8px 12px;
   cursor: pointer;
   font-size: 16px;
 }
 
-button:hover {
+#habit-setup button i {
+  margin-right: 5px;
+}
+
+#habit-setup button:hover {
   background-color: #45a049;
 }
 
@@ -119,7 +115,7 @@ button:hover {
 }
 
 .habit-wrapper {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: #333;
 }
@@ -136,7 +132,7 @@ button:hover {
   display: block;          /* Block-level element for new line */
   font-family: 'Georgia', serif;  /* Use a more elegant serif font */
   font-weight: normal;     /* Make it normal to keep readability */
-  font-size: 1em;        /* Increase font size */
+  font-size: 1em;          /* Increase font size */
   color: #333;             /* Darker color for better readability */
   text-align: center;      /* Center-align the quote */
   font-style: italic;      /* Add italics to give emphasis to quotes */
@@ -155,6 +151,7 @@ button:hover {
   margin-top: 20px;
 }
 
+/* Responsive and print-specific styles */
 @media print {
   #user-name-setup, h4, #habit-setup, button {
     display: none;
