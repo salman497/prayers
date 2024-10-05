@@ -45,37 +45,46 @@
 
     <!-- Habit Input Section -->
 <!-- Habit Input Section -->
-<div id="habit-setup">
+<div id="habit-setup" class="elevated">
   <form id="habit-form">
-    <div id="user-name-setup">
+   
+    
+    <div class="form-group">
       <label for="user-name">Your Name:</label>
       <input type="text" id="user-name" placeholder="Enter your name" />
     </div>
-    
-    <label for="prayer-select">Associate Your Habit with Prayer:</label>
-    <select id="prayer-select">
-      <option value="fajr">Fajr</option>
-      <option value="dhuhr">Dhuhr</option>
-      <option value="asr">Asr</option>
-      <option value="maghrib">Maghrib</option>
-      <option value="isha">Isha</option>
-    </select>
+    <h4>Setup Your Habit</h4>
+    <div class="form-group">
+      <label for="prayer-select">Associate Your Habit with Prayer:</label>
+      <select id="prayer-select">
+        <option value="fajr">Fajr</option>
+        <option value="dhuhr">Dhuhr</option>
+        <option value="asr">Asr</option>
+        <option value="maghrib">Maghrib</option>
+        <option value="isha">Isha</option>
+      </select>
+    </div>
 
-    <input type="text" id="habit-name" placeholder="Enter your habit" />
+    <div class="form-group">
+      <label for="habit-name">Your Habit:</label>
+      <input type="text" id="habit-name" placeholder="Enter your habit" />
+    </div>
 
-    <select id="habit-icon">
-      <option value="">Select Icon</option>
-      <option value="fas fa-dumbbell">Exercise</option>
-      <option value="fas fa-book">Read</option>
-      <option value="fas fa-praying-hands">Meditate</option>
-    </select>
+    <div class="form-group">
+      <label for="habit-icon">Choose an Icon for Your Habit:</label>
+      <select id="habit-icon">
+        <option value="">Select Icon</option>
+        <option value="fas fa-dumbbell">Exercise</option>
+        <option value="fas fa-book">Read</option>
+        <option value="fas fa-praying-hands">Meditate</option>
+      </select>
+    </div>
 
-    <button type="button" id="add-habit">
-      <i class="fas fa-plus"></i> Add
+    <button type="button" id="add-habit" class="mdc-button">
+      <i class="fas fa-plus"></i> Add Habit
     </button>
   </form>
 </div>
-
     <table>
       <thead>
         <tr>

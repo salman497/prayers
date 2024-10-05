@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   color: #444;
 }
 
@@ -11,8 +11,78 @@ h4 {
   text-align: center;
   margin-bottom: 20px;
   color: #4a90e2;
+  font-size: 1.5em;
 }
 
+#habit-setup {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Form group layout */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  color: #4a90e2;
+}
+
+/* Input field styles */
+input[type="text"],
+select {
+  padding: 14px;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #4a90e2;
+}
+
+/* Button styles */
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #357ABD;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+button:active {
+  background-color: #2C6091;
+}
+
+button i {
+  margin-right: 8px;
+}
+
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -41,77 +111,17 @@ td {
   font-size: 0.9em;
 }
 
-/* Improved input field and button styles */
-input[type="text"],
-select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #b0bec5;
-  border-radius: 4px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s;
+/* Highlight today's row */
+.highlight-today {
+  background-color: #e8f5e9;
 }
 
-input[type="text"]:focus,
-select:focus {
-  border-color: #4a90e2;
+/* Material Design card elevation */
+.elevated {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
-button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-button:hover {
-  background-color: #357ABD;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-button:active {
-  background-color: #2C6091;
-}
-
-button i {
-  margin-right: 8px;
-}
-
-/* Updated form layout with Material Design */
-#habit-setup {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  border-radius: 8px;
-}
-
-#user-name-setup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-#user-name-setup input {
-  padding: 10px;
-  border: 1px solid #b0bec5;
-  border-radius: 4px;
-  width: 250px;
-}
 
 /* Improved Prayer and Habit Section */
 .prayer-time-wrapper {
@@ -129,9 +139,7 @@ button i {
   margin-bottom: 5px;
 }
 
-.prayer-time-wrapper input[type="checkbox"] {
-  margin-right: 10px;
-}
+
 
 .habit-wrapper {
   display: inline-flex;
@@ -151,13 +159,13 @@ button i {
   font-style: italic;
   max-width: 80%;
 }
-
-.highlight-today {
-  background-color: #e0f7fa;
+.habit-span {
+  padding-left: 4px;
 }
 
 /* Print Button styling */
 #print-btn {
+  width: 140px;
   position: fixed;
   top: 20px;
   right: 20px;
@@ -175,9 +183,12 @@ button i {
 /* Responsive Design */
 @media (max-width: 768px) {
   #habit-setup {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    padding: 15px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
   }
 
   table {
@@ -198,7 +209,6 @@ button i {
 @media (max-width: 480px) {
   #habit-setup {
     padding: 10px;
-    gap: 8px;
   }
 
   button {
@@ -210,32 +220,24 @@ button i {
     padding: 10px 12px;
   }
 }
-
-/* Today's row highlight */
-.highlight-today {
-  background-color: #e8f5e9;
-}
-
-/* Style for heading in print view */
 #user-heading {
   text-align: center;
-  font-size: 24px;
-  margin-top: 20px;
 }
 
-/* Print view */
+
+/* Print view adjustments */
 @media print {
-  #user-name-setup, h4, #habit-setup, button {
+  #user-name-setup,
+  h4,
+  #habit-setup,
+  button {
     display: none;
   }
 
   #user-heading {
     display: block;
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
   }
-}
-
-/* Material Design Elevation for cards and table */
-.elevated {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
 }
