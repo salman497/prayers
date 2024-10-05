@@ -39,52 +39,49 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
-    <!-- User Name Input Section -->
-   
-
-    <!-- Habit Input Section -->
-<!-- Habit Input Section -->
-<div id="habit-setup" class="elevated">
-  <form id="habit-form">
-   
-    
-    <div class="form-group">
-      <label for="user-name">Your Name:</label>
-      <input type="text" id="user-name" placeholder="Enter your name" />
+    <!-- Customize Habit Button -->
+    <button id="customize-btn" class="mdc-button">Add Habit To Prayers</button>
+  
+    <!-- Habit Setup Popup -->
+    <div id="habit-popup" class="popup-overlay">
+      <div id="habit-setup" class="elevated popup-content">
+        <button id="close-popup" class="mdc-button">X</button> <!-- Close Button -->
+        <form id="habit-form">
+          <div class="form-group">
+            <label for="user-name">Your Name:</label>
+            <input type="text" id="user-name" placeholder="Enter your name" />
+          </div>
+          <h4>Setup Your Habit</h4>
+          <div class="form-group">
+            <label for="prayer-select">For Prayer:</label>
+            <select id="prayer-select">
+              <option value="fajr">Fajr</option>
+              <option value="dhuhr">Dhuhr</option>
+              <option value="asr">Asr</option>
+              <option value="maghrib">Maghrib</option>
+              <option value="isha">Isha</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="habit-name">Habit:</label>
+            <input type="text" id="habit-name" placeholder="Enter your habit" />
+          </div>
+  
+          <div class="form-group">
+            <label for="habit-icon">Icon:</label>
+            <select id="habit-icon">
+              <option value="">Select Icon</option>
+            </select>
+          </div>
+  
+          <button type="button" id="add-habit" class="mdc-button">
+            <i class="fas fa-plus"></i> Add Habit
+          </button>
+        </form>
+      </div>
     </div>
-    <h4>Setup Your Habit</h4>
-    <div class="form-group">
-      <label for="prayer-select">For Prayer:</label>
-      <select id="prayer-select">
-        <option value="fajr">Fajr</option>
-        <option value="dhuhr">Dhuhr</option>
-        <option value="asr">Asr</option>
-        <option value="maghrib">Maghrib</option>
-        <option value="isha">Isha</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="habit-name">Habit:</label>
-      <input type="text" id="habit-name" placeholder="Enter your habit" />
-    </div>
-
-    <div class="form-group">
-      <label for="habit-icon">Icon:</label>
-      <select id="habit-icon">
-        <option value="">Select Icon</option>
-        <option value="fas fa-dumbbell">Exercise</option>
-        <option value="fas fa-book">Read</option>
-        <option value="fas fa-praying-hands">Meditate</option>
-      </select>
-    </div>
-
-    <button type="button" id="add-habit" class="mdc-button">
-      <i class="fas fa-plus"></i> Add Habit
-    </button>
-  </form>
-</div>
+  
     <table>
       <thead>
         <tr>
@@ -100,10 +97,9 @@
         <!-- Rows will be dynamically inserted here -->
       </tbody>
     </table>
-
-    <!-- Print Button -->
+  
     <button id="print-btn" onclick="window.print()">Print Schedule</button>
-
+  
     <script src="data.js"></script>
     <script src="script.js"></script>
   </body>

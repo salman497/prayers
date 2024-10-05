@@ -200,27 +200,17 @@ const iconOptions = [
 
 function loadDropDown() {
 
-  const fajrElement = document.getElementById('fajr-icon');
-  const dhuhrElement = document.getElementById('dhuhr-icon');
-  const asrElement = document.getElementById('asr-icon');
-  const maghribElement = document.getElementById('maghrib-icon');
-  const ishaElement = document.getElementById('isha-icon');
-  
-  function populatePrayerDropdown(prayerElement) {
+
+  const prayerElement = document.getElementById('habit-icon');
     iconOptions.forEach(option => {
       const newOption = document.createElement('option');
       newOption.value = option.value;
       newOption.text = option.name;
       prayerElement.appendChild(newOption);
     });
-  }
-  populatePrayerDropdown(fajrElement);
-  populatePrayerDropdown(dhuhrElement);
-  populatePrayerDropdown(asrElement);
-  populatePrayerDropdown(maghribElement);
-  populatePrayerDropdown(ishaElement);
+ 
 };
 
 
-// loadDropDown();
+ loadDropDown();
 

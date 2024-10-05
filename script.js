@@ -170,5 +170,27 @@ async function generatePrayerTable() {
   }
 }
 
+// Get elements
+const customizeBtn = document.getElementById('customize-btn');
+const habitPopup = document.getElementById('habit-popup');
+const closePopupBtn = document.getElementById('close-popup');
+
+// Open popup when the "Customize Your Habit" button is clicked
+customizeBtn.addEventListener('click', () => {
+  habitPopup.classList.add('active');
+});
+
+// Close popup when the "Close" button is clicked
+closePopupBtn.addEventListener('click', () => {
+  habitPopup.classList.remove('active');
+});
+
+// Optional: Close the popup if the user clicks outside the popup content
+habitPopup.addEventListener('click', (event) => {
+  if (event.target === habitPopup) {
+    habitPopup.classList.remove('active');
+  }
+});
+
 // Generate the table when the page loads or when habits are updated
 generatePrayerTable();
