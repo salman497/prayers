@@ -128,27 +128,32 @@ async function generatePrayerTable() {
 
     const prayerTimes = await fetchPrayerTimes(currentDate);
     const isToday = currentDate.getTime() === today.getTime();
-    function tdHtml(prayerTime, habit, habitIcon) {
+    function tdHtml(prayerTime, habit, habitIcon, prayerName) {
+      const randomQuote = `<span class="motivation"> ${getUniqueRandomQuote(prayerName)}</span` ; // Get unique quote for the prayer
+
       return `
-        <div class="prayer-time-wrapper">
+      <div class="prayer-time-wrapper">
+        <div class="prayer-time-habit">
           <input type="checkbox" /> ${prayerTime}
           ${habit ? `
           <div class="habit-wrapper">
-           <span class="arrow">→</span> <input type="checkbox" />
+            <span class="arrow">→</span> <input type="checkbox" />
             ${habitIcon ? `<i class="${habitIcon}"></i>` : ""} 
             <span class='habit-span'>${habit}</span>
           </div>` : ""}
-        </div>`;
+        </div>
+        <div class="motivation">${randomQuote}</div> 
+      </div>`;
     }
     // For each prayer, show the prayer time, habit with icon
     const row = `
     <tr ${isToday ? 'class="highlight-today"' : ""}>
       <td>${adjustedDaysOfWeek[i]}</td>
-      <td>${tdHtml(prayerTimes.fajr, habits.fajr.habit, habits.fajr.icon)}</td>
-      <td>${tdHtml(prayerTimes.dhuhr, habits.dhuhr.habit, habits.dhuhr.icon)}</td>
-      <td>${tdHtml(prayerTimes.asr, habits.asr.habit, habits.asr.icon)}</td>
-      <td>${tdHtml(prayerTimes.maghrib, habits.maghrib.habit, habits.maghrib.icon)}</td>
-      <td>${tdHtml(prayerTimes.isha, habits.isha.habit, habits.isha.icon)}</td>
+      <td>${tdHtml(prayerTimes.fajr, habits.fajr.habit, habits.fajr.icon, 'fajr')}</td>
+      <td>${tdHtml(prayerTimes.dhuhr, habits.dhuhr.habit, habits.dhuhr.icon, 'dhuhr')}</td>
+      <td>${tdHtml(prayerTimes.asr, habits.asr.habit, habits.asr.icon, 'asr')}</td>
+      <td>${tdHtml(prayerTimes.maghrib, habits.maghrib.habit, habits.maghrib.icon, 'maghrib')}</td>
+      <td>${tdHtml(prayerTimes.isha, habits.isha.habit, habits.isha.icon, 'isha')}</td>
     </tr>
   `;
 

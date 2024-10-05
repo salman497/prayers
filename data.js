@@ -111,3 +111,36 @@ const quotes = {
     `"Allah rewards those who conclude their day with Isha." (Bukhari 744)`,
   ],
 };
+
+const usedQuotes = {
+  fajr: [],
+  dhuhr: [],
+  asr: [],
+  maghrib: [],
+  isha: []
+};
+
+// Function to get a unique random quote for the week
+function getUniqueRandomQuote(prayer) {
+  const prayerQuotes = quotes[prayer];
+  const alreadyUsed = usedQuotes[prayer];
+
+  // If all quotes have been used, reset the used list for this prayer
+  if (alreadyUsed.length === prayerQuotes.length) {
+    usedQuotes[prayer] = [];
+  }
+
+  // Filter available quotes that haven't been used
+  const availableQuotes = prayerQuotes.filter((_, index) => !alreadyUsed.includes(index));
+
+  // Pick a random index from available quotes
+  const randomIndex = Math.floor(Math.random() * availableQuotes.length);
+
+  // Get the quote using the random index
+  const quoteIndex = prayerQuotes.indexOf(availableQuotes[randomIndex]);
+
+  // Mark this quote as used
+  usedQuotes[prayer].push(quoteIndex);
+
+  return prayerQuotes[quoteIndex];
+}
