@@ -166,23 +166,6 @@ td {
   padding-left: 4px;
 }
 
-/* Print Button styling */
-#print-btn {
-  width: 140px;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #4a90e2;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-#print-btn:hover {
-  background-color: #357ABD;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   #habit-setup {
@@ -266,15 +249,38 @@ td {
 
 /* Button styling for "Customize Your Habit" */
 #customize-btn {
+  right: 191px;
+}
+
+#login-btn {
+  right: 334px;
+}
+
+#save-btn {
+  right: 450px;
+  display: none;
+}
+
+#print-btn {
+  right: 20px;
+}
+
+.topBtn:hover {
+  background-color: #357ABD;
+}
+
+.topBtn {
   position: fixed;
   top: 20px;
-  right: 172px;
   background-color: #4a90e2;
   color: white;
   padding: 12px 16px;
   border-radius: 50px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+
+
 
 #customize-btn:hover {
   background-color: #357ABD;

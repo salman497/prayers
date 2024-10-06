@@ -26,21 +26,22 @@ const provider = new GoogleAuthProvider();
 function updateAuthUI(user) {
   const loginButton = document.getElementById('login-btn');
   const welcomeMessage = document.getElementById('welcome-message');
-
+  const saveBtn = document.getElementById('save-btn');
+  
   if (user) {
     // User is logged in
-    loginButton.textContent = 'Logout';
+    loginButton.innerHTML = '<i class="fab fa-google"></i> Logout';
     loginButton.removeEventListener('click', login); // Remove previous login handler
     loginButton.addEventListener('click', logout); // Add logout handler
-
+    saveBtn.style.display = 'block'; // Show save button
     // Display welcome message
     welcomeMessage.textContent = `Welcome, ${user.displayName}!`;
   } else {
     // User is logged out
-    loginButton.textContent = 'Login with Google';
+    loginButton.innerHTML = '<i class="fab fa-google"></i> Login with Google';
     loginButton.removeEventListener('click', logout); // Remove previous logout handler
     loginButton.addEventListener('click', login); // Add login handler
-
+    saveBtn.style.display = 'none'; // Hide save button
     // Clear welcome message
     welcomeMessage.textContent = '';
   }

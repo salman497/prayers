@@ -40,15 +40,29 @@
   </head>
   <body>
     <!-- Customize Habit Button -->
-    <button id="customize-btn" class="mdc-button">Add Habits To Prayers</button>
-    <button id="login-btn" class="mdc-button">Login with Google</button>
+    <button id="customize-btn" class="topBtn mdc-button">
+      <i class="fas fa-plus"></i> Add Habits 
+    </button>
+    
+    <!-- Login Button with a "google" icon -->
+    <button id="login-btn" class="topBtn mdc-button">
+      <i class="fab fa-google"></i> Login with Google
+    </button>
+    
+    <!-- Save Button with a "save" icon -->
+    <button id="save-btn" class="topBtn mdc-button">
+      <i class="fas fa-save"></i> Save Habits
+    </button>
     <div id="welcome-message"></div>
+
+    <button id="print-btn" class="topBtn mdc-button" onclick="window.print()"><i class="fas fa-print"></i> Print Schedule</button>
+
 
     <!-- Habit Setup Popup -->
     <div id="habit-popup" class="popup-overlay">
       <div id="habit-setup" class="elevated popup-content">
         <button id="close-popup" class="mdc-button">X</button> <!-- Close Button -->
-        <button id="save-btn" class="mdc-button">Save Habits</button>
+       
         <form id="habit-form">
           <div class="form-group">
             <label for="user-name">Your Name:</label>
@@ -113,7 +127,6 @@
       </tbody>
     </table>
   
-    <button id="print-btn" onclick="window.print()">Print Schedule</button>
   
     <script src="data.js"></script>
     <script src="script.js"></script>
