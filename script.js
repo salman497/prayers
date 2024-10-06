@@ -139,22 +139,45 @@ async function generatePrayerTable() {
     const isToday = currentDate.getTime() === today.getTime();
 
     function tdHtml(prayerTime, prayerName, currentDay) {
-      let habitHtml = prayerHabits[prayerName]
-        .filter((habit) => habit.day === "all" || habit.day === currentDay)
-        .map(
-          (habit) =>
-            `<div class="habit-wrapper">
-               <span class="arrow">→</span> 
-               <input type="checkbox" />
-               ${habit.icon ? `<i class="td-font-icon ${habit.icon}"></i>` : ""}
-               <span class='habit-span'>${habit.habit}</span>
-             </div>`
-        )
-        .join("");
-    
-        console.log('----->>>>',prayerName);
+      // Filter habits for the specific current day
+      let specificDayHabits = prayerHabits[prayerName].filter((habit) => habit.day === currentDay);
+      
+      // If there are no specific day habits, fallback to "all" day habits
+      let habitHtml;
+      
+      if (specificDayHabits.length > 0) {
+        // Show specific day habits only
+        habitHtml = specificDayHabits
+          .map(
+            (habit) =>
+              `<div class="habit-wrapper">
+                 <span class="arrow">→</span> 
+                 <input type="checkbox" />
+                 ${habit.icon ? `<i class="td-font-icon ${habit.icon}"></i>` : ""}
+                 <span class='habit-span'>${habit.habit}</span>
+               </div>`
+          )
+          .join("");
+      } else {
+        // Show "all" day habits if no specific day habits are found
+        let allDayHabits = prayerHabits[prayerName].filter((habit) => habit.day === "all");
+        habitHtml = allDayHabits
+          .map(
+            (habit) =>
+              `<div class="habit-wrapper">
+                 <span class="arrow">→</span> 
+                 <input type="checkbox" />
+                 ${habit.icon ? `<i class="td-font-icon ${habit.icon}"></i>` : ""}
+                 <span class='habit-span'>${habit.habit}</span>
+               </div>`
+          )
+          .join("");
+      }
+      
+      // Get the random motivational quote
       const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span>`;
-    
+      
+      // Return the complete HTML for the prayer time
       return `
         <div class="prayer-time-wrapper">
           <div class="prayer-time-habit">
