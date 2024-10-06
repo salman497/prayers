@@ -41,11 +41,14 @@
   <body>
     <!-- Customize Habit Button -->
     <button id="customize-btn" class="mdc-button">Add Habits To Prayers</button>
-  
+    <button id="login-btn" class="mdc-button">Login with Google</button>
+    <div id="welcome-message"></div>
+
     <!-- Habit Setup Popup -->
     <div id="habit-popup" class="popup-overlay">
       <div id="habit-setup" class="elevated popup-content">
         <button id="close-popup" class="mdc-button">X</button> <!-- Close Button -->
+        <button id="save-btn" class="mdc-button">Save Habits</button>
         <form id="habit-form">
           <div class="form-group">
             <label for="user-name">Your Name:</label>
@@ -114,5 +117,6 @@
   
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="auth.js" type="module"></script>
   </body>
 </html>

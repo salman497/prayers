@@ -225,3 +225,4 @@ habitPopup.addEventListener('click', (event) => {
 
 // Generate the table when the page loads or when habits are updated
 generatePrayerTable();
+
