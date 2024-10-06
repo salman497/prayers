@@ -39,23 +39,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Customize Habit Button -->
-    <button id="customize-btn" class="topBtn mdc-button">
-      <i class="fas fa-plus"></i> Add Habits 
-    </button>
-    
-    <!-- Login Button with a "google" icon -->
-    <button id="login-btn" class="topBtn mdc-button">
-      <i class="fab fa-google"></i> Login with Google
-    </button>
-    
-    <!-- Save Button with a "save" icon -->
-    <button id="save-btn" class="topBtn mdc-button">
-      <i class="fas fa-save"></i> Save Habits
-    </button>
+<!-- Wrap buttons in a responsive container div -->
+<div class="topBtn-container">
+<!-- Customize Habit Button -->
+<button id="customize-btn" class="topBtn mdc-button">
+  <i class="fas fa-plus"></i> <span>Add Habits</span>
+</button>
 
-    <button id="print-btn" class="topBtn mdc-button" onclick="window.print()"><i class="fas fa-print"></i> Print Schedule</button>
+<!-- Login Button with a "google" icon -->
+<button id="login-btn" class="topBtn mdc-button">
+  <i class="fab fa-google"></i> <span>Login with Google</span>
+</button>
 
+<!-- Save Button with a "save" icon -->
+<button id="save-btn" class="topBtn mdc-button">
+  <i class="fas fa-save"></i> <span>Save Habits</span>
+</button>
+
+<!-- Print Schedule Button with a "print" icon -->
+<button id="print-btn" class="topBtn mdc-button" onclick="window.print()">
+  <i class="fas fa-print"></i> <span>Print Schedule</span>
+</button>
+</div>
 
     <!-- Habit Setup Popup -->
     <div id="habit-popup" class="popup-overlay">

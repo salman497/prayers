@@ -30,7 +30,7 @@ function updateAuthUI(user) {
   
   if (user) {
     // User is logged in
-    loginButton.innerHTML = '<i class="fab fa-google"></i> Logout';
+    loginButton.innerHTML = '<i class="fab fa-google"></i> <span>Logout</span>';
     loginButton.removeEventListener('click', login); // Remove previous login handler
     loginButton.addEventListener('click', logout); // Add logout handler
     saveBtn.style.display = 'block'; // Show save button
@@ -39,7 +39,7 @@ function updateAuthUI(user) {
     generatePrayerTable(); 
   } else {
     // User is logged out
-    loginButton.innerHTML = '<i class="fab fa-google"></i> Login with Google';
+    loginButton.innerHTML = '<i class="fab fa-google"></i> <span>Login with Google</span>';
     loginButton.removeEventListener('click', logout); // Remove previous logout handler
     loginButton.addEventListener('click', login); // Add login handler
     saveBtn.style.display = 'none'; // Hide save button
