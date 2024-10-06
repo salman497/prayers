@@ -152,6 +152,7 @@ async function generatePrayerTable() {
         )
         .join("");
     
+        console.log('----->>>>',prayerName);
       const randomQuote = `<span> ${getUniqueRandomQuote(prayerName)}</span>`;
     
       return `

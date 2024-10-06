@@ -122,8 +122,13 @@ const usedQuotes = {
 
 // Function to get a unique random quote for the week
 function getUniqueRandomQuote(prayer) {
+  // If no quotes exist for this prayer, return a default fallback quote
+  if (!quotes[prayer]) {
+    return "Stay motivated and keep praying!";
+  }
+
   const prayerQuotes = quotes[prayer];
-  const alreadyUsed = usedQuotes[prayer];
+  const alreadyUsed = usedQuotes[prayer] || [];
 
   // If all quotes have been used, reset the used list for this prayer
   if (alreadyUsed.length === prayerQuotes.length) {
@@ -133,10 +138,15 @@ function getUniqueRandomQuote(prayer) {
   // Filter available quotes that haven't been used
   const availableQuotes = prayerQuotes.filter((_, index) => !alreadyUsed.includes(index));
 
+  // If no available quotes (fallback safety), return the first quote
+  if (availableQuotes.length === 0) {
+    return prayerQuotes[0];
+  }
+
   // Pick a random index from available quotes
   const randomIndex = Math.floor(Math.random() * availableQuotes.length);
 
-  // Get the quote using the random index
+  // Get the quote using the random index from available quotes
   const quoteIndex = prayerQuotes.indexOf(availableQuotes[randomIndex]);
 
   // Mark this quote as used
