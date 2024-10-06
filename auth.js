@@ -25,7 +25,7 @@ const provider = new GoogleAuthProvider();
 // Function to handle login and logout UI
 function updateAuthUI(user) {
   const loginButton = document.getElementById('login-btn');
-  const welcomeMessage = document.getElementById('welcome-message');
+  const welcomeMessage = document.getElementById('user-name');
   const saveBtn = document.getElementById('save-btn');
   
   if (user) {
@@ -35,7 +35,8 @@ function updateAuthUI(user) {
     loginButton.addEventListener('click', logout); // Add logout handler
     saveBtn.style.display = 'block'; // Show save button
     // Display welcome message
-    welcomeMessage.textContent = `Welcome, ${user.displayName}!`;
+    document.getElementById('user-name').value = `${capitalizeName(user.displayName)}`;
+    generatePrayerTable(); 
   } else {
     // User is logged out
     loginButton.innerHTML = '<i class="fab fa-google"></i> Login with Google';
@@ -43,7 +44,8 @@ function updateAuthUI(user) {
     loginButton.addEventListener('click', login); // Add login handler
     saveBtn.style.display = 'none'; // Hide save button
     // Clear welcome message
-    welcomeMessage.textContent = '';
+    document.getElementById('user-name').value = '';
+    generatePrayerTable(); 
   }
 }
 
@@ -116,3 +118,12 @@ onAuthStateChanged(auth, (user) => {
     updateAuthUI(null); // Update UI to show login button
   }
 });
+
+function capitalizeName(name) {
+    return name
+      .toLowerCase() // Convert the whole string to lowercase first
+      .split(' ')    // Split the string into an array of words
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+      .join(' ');    // Join the words back into a single string
+  }
+  

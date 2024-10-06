@@ -53,7 +53,6 @@
     <button id="save-btn" class="topBtn mdc-button">
       <i class="fas fa-save"></i> Save Habits
     </button>
-    <div id="welcome-message"></div>
 
     <button id="print-btn" class="topBtn mdc-button" onclick="window.print()"><i class="fas fa-print"></i> Print Schedule</button>
 
@@ -64,9 +63,8 @@
         <button id="close-popup" class="mdc-button">X</button> <!-- Close Button -->
        
         <form id="habit-form">
-          <div class="form-group">
-            <label for="user-name">Your Name:</label>
-            <input type="text" id="user-name" placeholder="Enter your name" />
+          <div class="form-group" style="display: none;">
+            <input type="text" id="user-name"  />
           </div>
           <h4>Setup Your Habit</h4>
           <div class="form-group">
