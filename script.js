@@ -116,6 +116,7 @@ document.getElementById("add-habit").addEventListener("click", function () {
 // Modified function to render the table dynamically
 async function generatePrayerTable() {
   const tableBody = document.getElementById("prayer-times");
+  if(!tableBody.innerHTML) return;
   tableBody.innerHTML = "";
 
   const userName = document.getElementById("user-name").value.trim(); // Get user name

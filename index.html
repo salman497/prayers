@@ -46,15 +46,20 @@
   <i class="fas fa-plus"></i> <span>Add Habits</span>
 </button>
 
+<!-- Save Button with a "save" icon -->
+<button id="save-btn" class="topBtn mdc-button">
+  <i class="fas fa-save"></i> <span>Save</span>
+</button>
+<button id="delete-all-btn" class="topBtn mdc-button" style="display: none;">
+  <i class="fas fa-trash"></i> <span>Delete</span>
+</button>
+
 <!-- Login Button with a "google" icon -->
 <button id="login-btn" class="topBtn mdc-button">
   <i class="fab fa-google"></i> <span>Login with Google</span>
 </button>
 
-<!-- Save Button with a "save" icon -->
-<button id="save-btn" class="topBtn mdc-button">
-  <i class="fas fa-save"></i> <span>Save Habits</span>
-</button>
+
 
 <!-- Print Schedule Button with a "print" icon -->
 <button id="print-btn" class="topBtn mdc-button" onclick="window.print()">
@@ -126,13 +131,16 @@
         </tr>
       </thead>
       <tbody id="prayer-times">
-        <!-- Rows will be dynamically inserted here -->
+        <span style="display: none;"> Loading...</span>
       </tbody>
     </table>
   
   
-    <script src="data.js"></script>
-    <script src="script.js"></script>
-    <script src="auth.js" type="module"></script>
+    <script>
+      const timestamp = new Date().getTime();
+      document.write(`<script src="data.js?v=${timestamp}"><\/script>`);
+      document.write(`<script src="script.js?v=${timestamp}"><\/script>`);
+      document.write(`<script src="auth.js?v=${timestamp}" type="module"><\/script>`);
+    </script>
   </body>
 </html>
