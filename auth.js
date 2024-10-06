@@ -37,7 +37,7 @@ function updateAuthUI(user) {
     document.getElementById('user-name').value = `${capitalizeName(user.displayName)}`;
   } else {
     // User is logged out
-    loginButton.innerHTML = '<i class="fab fa-google"></i> <span>Login with Google</span>';
+    loginButton.innerHTML = '<i class="fab fa-google"></i> <span>Login</span>';
     loginButton.removeEventListener('click', logout); // Remove previous logout handler
     loginButton.addEventListener('click', login); // Add login handler
     saveBtn.style.display = 'none'; // Hide save button

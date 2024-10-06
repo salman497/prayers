@@ -260,8 +260,9 @@ td {
   #user-name-setup,
   h4,
   #habit-setup,
+  .topBtn-container,
   button {
-    display: none;
+    display: none!important;
   }
 
   #user-heading {
