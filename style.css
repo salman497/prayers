@@ -363,3 +363,51 @@ input[type="checkbox" i] {
     padding: 10px; /* Reduce padding */
   }
 }
+
+
+/************************************ select2 ************************************/
+ /* Set height for the select box (56px for Material Design) */
+ .select2-container--default .select2-selection--single {
+  height: 56px; /* Material Design height */
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding-left: 12px; /* Adjust padding to give space inside */
+  font-size: 16px; /* Adjust font size for material design */
+  box-shadow: none; /* Remove the default shadow */
+}
+
+/* Adjust the height of the selected value's text */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 56px; /* Match the height to center the text */
+  padding-left: 5px; /* Add some padding to the text */
+}
+
+/* Style the dropdown options */
+.select2-results__option {
+  display: flex;
+  align-items: center;
+  height: 48px; /* Material Design option height */
+  padding: 0 12px;
+  font-size: 16px; /* Font size for dropdown items */
+}
+
+/* Add spacing between the icon and the text in dropdown */
+.select2-results__option i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Set a hover effect for the selected option */
+.select2-results__option--highlighted[aria-selected] {
+  background-color: #6200ea; /* Purple background (material design style) */
+  color: white; /* White text for contrast */
+}
+
+/* Focus state border styling for material design look */
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default .select2-selection--single:hover {
+  border-color: #6200ea; /* Material Design focus color (purple) */
+  box-shadow: 0 0 0 2px rgba(98, 0, 234, 0.2); /* Slight shadow on focus */
+}

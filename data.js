@@ -157,70 +157,96 @@ function getUniqueRandomQuote(prayer) {
 
 
 const iconOptions = [
-  { name: '🏃', value: 'fas fa-running' },
-  { name: '📚', value: 'fas fa-book' },
-  { name: '❤️', value: 'fas fa-heart' },
-  { name: '🏋️', value: 'fas fa-dumbbell' },
-  { name: '🚴', value: 'fas fa-biking' },
-  { name: '🎵', value: 'fas fa-music' },
-  { name: '🧘', value: 'fas fa-yoga' },
-  { name: '🥕', value: 'fas fa-carrot' },
-  { name: '💧', value: 'fas fa-water' },
-  { name: '☕', value: 'fas fa-coffee' },
-  { name: '🌳', value: 'fas fa-tree' },
-  { name: '💻', value: 'fas fa-code' },
-  { name: '🎸', value: 'fas fa-guitar' },
-  { name: '🎨', value: 'fas fa-paint-brush' },
-  { name: '🎥', value: 'fas fa-film' },
-  { name: '🏊', value: 'fas fa-swimmer' },
-  { name: '🛌', value: 'fas fa-bed' },
-  { name: '🙏', value: 'fas fa-praying-hands' },
-  { name: '✍️', value: 'fas fa-pen' },
-  { name: '✈️', value: 'fas fa-plane' },
-  { name: '🧠', value: 'fas fa-mind' },
-  { name: '⚖️', value: 'fas fa-weight' },
-  { name: '💰', value: 'fas fa-wallet' },
-  { name: '🧘', value: 'fas fa-meditation' },
-  { name: '🏆', value: 'fas fa-trophy' },
-  { name: '🏫', value: 'fas fa-school' },
-  { name: '🌍', value: 'fas fa-language' },
-  { name: '📏', value: 'fas fa-pencil-ruler' },
-  { name: '💎', value: 'fas fa-gem' },
-  { name: '🚭', value: 'fas fa-smoking-ban' },
-  { name: '🗓️', value: 'fas fa-calendar-check' },
-  { name: '📷', value: 'fas fa-camera' },
-  { name: '🧠', value: 'fas fa-brain' },
-  { name: '☀️', value: 'fas fa-sun' },
-  { name: '🚶', value: 'fas fa-walking' },
-  { name: '⚽', value: 'fas fa-futbol' },
-  { name: '🌱', value: 'fas fa-seedling' },
-  { name: '💡', value: 'fas fa-lightbulb' },
-  { name: '🌐', value: 'fas fa-globe' },
-  { name: '🍪', value: 'fas fa-cookie-bite' },
-  { name: '🍃', value: 'fas fa-leaf' },
-  { name: '📞', value: 'fas fa-phone' },
-  { name: '🤝', value: 'fas fa-hands-helping' },
-  { name: '🔧', value: 'fas fa-tools' },
-  { name: '🚿', value: 'fas fa-shower' },
-  { name: '🚗', value: 'fas fa-car' },
-  { name: '🍽️', value: 'fas fa-utensils' },
-  { name: '🐱', value: 'fas fa-cat' },
-  { name: '🎲', value: 'fas fa-dice' }
+  { name: 'fas fa-running', label: 'Exercise (Running)' },
+  { name: 'fas fa-book', label: 'Reading' },
+  { name: 'fas fa-heart', label: 'Self-Care' },
+  { name: 'fas fa-dumbbell', label: 'Weight Training' },
+  { name: 'fas fa-biking', label: 'Cycling' },
+  { name: 'fas fa-music', label: 'Music Practice' },
+  { name: 'fas fa-carrot', label: 'Healthy Eating' },
+  { name: 'fas fa-water', label: 'Drink Water' },
+  { name: 'fas fa-coffee', label: 'Coffee Break' },
+  { name: 'fas fa-tree', label: 'Nature Walk' },
+  { name: 'fas fa-bed', label: 'Sleep' },
+  { name: 'fas fa-apple-alt', label: 'Eat Fruit' },
+  { name: 'fas fa-leaf', label: 'Mindfulness/Meditation' },
+  { name: 'fas fa-shower', label: 'Shower' },
+  { name: 'fas fa-smile', label: 'Positive Thinking' },
+  { name: 'fas fa-pencil-alt', label: 'Writing' },
+  { name: 'fas fa-hands-wash', label: 'Hygiene' },
+  { name: 'fas fa-laptop', label: 'Learning' },
+  { name: 'fas fa-sun', label: 'Morning Routine' },
+  { name: 'fas fa-moon', label: 'Night Routine' },
+  { name: 'fas fa-brain', label: 'Mental Exercises' },
+  { name: 'fas fa-tv', label: 'TV/Relaxation' },
+  { name: 'fas fa-utensils', label: 'Meal Planning' },
+  { name: 'fas fa-couch', label: 'Relax/Unwind' },
+  { name: 'fas fa-broom', label: 'Clean House' },
+  { name: 'fas fa-seedling', label: 'Gardening' },
+  { name: 'fas fa-handshake', label: 'Connect with Others' },
+  { name: 'fas fa-hiking', label: 'Hiking' },
+  { name: 'fas fa-hand-holding-heart', label: 'Help Others/Volunteering' },
+  { name: 'fas fa-headphones', label: 'Listening to Podcasts' },
+  { name: 'fas fa-clipboard-list', label: 'Task Management' },
+  { name: 'fas fa-wallet', label: 'Financial Planning' },
+  { name: 'fas fa-file-invoice-dollar', label: 'Budgeting' },
+  { name: 'fas fa-fish', label: 'Healthy Protein' },
+  { name: 'fas fa-tasks', label: 'Daily Goals' },
+  { name: 'fas fa-camera', label: 'Photography' },
+  { name: 'fas fa-microphone', label: 'Voice/Podcasting' },
+  { name: 'fas fa-palette', label: 'Art/Creative Work' },
+  { name: 'fas fa-plane', label: 'Travel' },
+  { name: 'fas fa-cookie-bite', label: 'Mindful Eating' },
+  { name: 'fas fa-code', label: 'Coding/Programming' },
+  { name: 'fas fa-book-open', label: 'Study' },
+  { name: 'fas fa-tint', label: 'Skincare Routine' },
+  { name: 'fas fa-mortar-pestle', label: 'Cooking' },
+  { name: 'fas fa-recycle', label: 'Recycling' },
+  { name: 'fas fa-hand-paper', label: 'Pause/Take Break' },
+  { name: 'fas fa-clinic-medical', label: 'Health Check' },
+  { name: 'fas fa-praying-hands', label: 'Spiritual Practice/Prayer' },
+  { name: 'fas fa-star', label: 'Daily Achievement' },
+  { name: 'fas fa-briefcase', label: 'Work/Professional Task' },
+  { name: 'fas fa-tools', label: 'Home Improvement' },
+  { name: 'fas fa-bell', label: 'Stay Alert/Focus' },
+  { name: 'fas fa-user-friends', label: 'Socializing' },
+  { name: 'fas fa-rocket', label: 'Innovation/Creativity' },
+  { name: 'fas fa-calendar-check', label: 'Plan the Day' },
+  { name: 'fas fa-chalkboard-teacher', label: 'Teaching/Tutoring' },
+  { name: 'fas fa-stethoscope', label: 'Doctor Appointment' },
+  { name: 'fas fa-dog', label: 'Pet Care' },
+  { name: 'fas fa-spa', label: 'Spa/Relaxation' },
+  { name: 'fas fa-lightbulb', label: 'Brainstorming Ideas' },
+  { name: 'fas fa-globe', label: 'Global Awareness/News' },
+  { name: 'fas fa-drum', label: 'Drumming Practice' },
+  { name: 'fas fa-pray', label: 'Gratitude/Reflection' }
 ];
 
 function loadDropDown() {
+  iconOptions.forEach(option => {
+    $('#habit-icon').append(new Option(option.label, option.name));
+  });
 
+  // Initialize Select2 with icon rendering
+  $('#habit-icon').select2({
+    templateResult: formatIcon,  // This renders the icons in the dropdown
+    templateSelection: formatIcon, // This renders the icon in the selection
+    width: '100%' // Optional, to make the dropdown full width
+  });
 
-  const prayerElement = document.getElementById('habit-icon');
-    iconOptions.forEach(option => {
-      const newOption = document.createElement('option');
-      newOption.value = option.value;
-      newOption.text = option.name;
-      prayerElement.appendChild(newOption);
-    });
- 
+  // Function to format the icons in the dropdown
+  function formatIcon(option) {
+    if (!option.id) {
+      return option.text; // Return the default label if no icon
+    }
+    const icon = $('<i>', { class: option.id }); // Create an <i> element with the FontAwesome class
+    const text = $('<span>').text(' ' + option.text); // Create a span for text
+    return $('<span>').append(icon).append(text); // Combine icon and text
+  }
 };
 
+$(document).ready(function () {
+  loadDropDown();
+});
 
- loadDropDown();
 
